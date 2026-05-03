@@ -17,7 +17,9 @@ const app = express();
 
 app.use(
   cors({
-    origin: "*", // 👈 from env
+    origin: (origin, callback) => {
+      callback(null, origin); // allow all origins dynamically
+    },
     credentials: true,
   })
 );
