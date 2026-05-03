@@ -17,11 +17,7 @@ const app = express();
 
 app.use(
   cors({
-    origin:
-      process.env.NODE_ENV === "production"
-        ? process.env.CLIENT_URL   // ✅ from Railway env
-        : ["http://localhost:3000", "http://localhost:5173"], // local
-    methods: ["GET", "POST", "DELETE", "PUT"],
+    origin: process.env.CLIENT_URL, // 👈 from env
     credentials: true,
   })
 );
