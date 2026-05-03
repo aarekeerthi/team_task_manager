@@ -1,12 +1,10 @@
 import jwt from "jsonwebtoken";
 
 const getCookieOptions = () => {
-  const isProduction = process.env.NODE_ENV === "production";
-
   return {
     httpOnly: true,
-    secure: isProduction,
-    sameSite: isProduction ? "none" : "lax",
+    secure: true,        // 🔥 FORCE TRUE
+    sameSite: "none",    // 🔥 FORCE NONE
   };
 };
 

@@ -17,7 +17,10 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["https://mern-task-manager-app.netlify.app", "http://localhost:3000", "http://localhost:3001"],
+    origin:
+      process.env.NODE_ENV === "production"
+        ? process.env.CLIENT_URL   // ✅ from Railway env
+        : ["http://localhost:3000", "http://localhost:5173"], // local
     methods: ["GET", "POST", "DELETE", "PUT"],
     credentials: true,
   })
