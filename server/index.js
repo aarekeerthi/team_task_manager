@@ -29,6 +29,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 //app.use(morgan("dev"));
+
+// Health check endpoint
+app.get("/", (req, res) => {
+  res.status(200).json({ message: "API is running" });
+});
+
 app.use("/api", routes);
 
 app.use(routeNotFound);
